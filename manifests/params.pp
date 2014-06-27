@@ -16,7 +16,11 @@ class puppetlabs_yum::params {
       $urlbit = 'fedora/f$releasever'
     } else {
       $ostype = 'EL'
-      $urlbit = 'el/$releasever'
+      if $::operatingsystemmajrelease == 7 {
+        $urlbit = "el/${::operatingsystemmajrelease}"
+      } else {
+        $urlbit = 'el/$releasever'
+      }
     }
   }
 }
