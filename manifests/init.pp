@@ -17,8 +17,8 @@ class puppetlabs_yum (
   if $::pper_installed == 'false' or $::pper_installed == undef {
 
     if $::osfamily == 'RedHat' {
-      include puppetlabs_yum::products
-      include puppetlabs_yum::deps
+      class { 'puppetlabs_yum::products': }
+      class { 'puppetlabs_yum::deps': }
       class { 'puppetlabs_yum::devel':
         enable_devel   => $enable_devel,
       }
